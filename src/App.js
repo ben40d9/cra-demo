@@ -1,7 +1,9 @@
 import "./App.css";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 const App = () => {
+  const [advice, setAdvice] = useState("");
+
   useEffect(() => {
     const url = "https://api.adviceslip.com/advice";
 
@@ -10,6 +12,7 @@ const App = () => {
         const response = await fetch(url);
         const data = await response.json();
         console.log(data);
+        console.log(data.slip.advice);
       } catch (err) {
         console.log("error", err);
       }
@@ -17,7 +20,11 @@ const App = () => {
 
     fetchData();
   }, []);
-  return <div></div>;
+  return (
+    <div>
+      <p>{advice}</p>
+    </div>
+  );
 };
 
 export default App;
