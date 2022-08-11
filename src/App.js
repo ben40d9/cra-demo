@@ -12,7 +12,7 @@ const App = () => {
         const response = await fetch(url);
         const data = await response.json();
         console.log(data);
-        console.log(data.slip.advice);
+        setAdvice(data.slip.advice);
       } catch (err) {
         console.log("error", err);
       }
