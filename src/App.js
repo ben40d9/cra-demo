@@ -3,7 +3,8 @@ import React, { useEffect } from "react";
 
 const App = () => {
   useEffect(() => {
-    const url = "https://jsonplaceholder.typicode.com/posts";
+    //adding the ?_limit=X to the end of the url sets a limit on how many objects you get back
+    const url = "https://jsonplaceholder.typicode.com/posts?_limit=12";
 
     const fetchData = async () => {
       try {
