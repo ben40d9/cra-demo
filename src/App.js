@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
+// import styled from "styled-components";
 
 const App = () => {
   const [advice, setAdvice] = useState("");
@@ -22,25 +22,26 @@ const App = () => {
   }, []);
 
   return (
-    <Wrapper>
-      <Paragraph>{advice}</Paragraph>
-    </Wrapper>
+    // <Wrapper>
+    //   <Paragraph>{advice}</Paragraph>
+    // </Wrapper>
+    <p>{advice}</p>
   );
 };
 
 export default App;
 
-const Wrapper = styled.div`
-  padding-top: 150px;
-  margin: 0 auto;
-`;
+// const Wrapper = styled.div`
+//   padding-top: 150px;
+//   margin: 0 auto;
+// `;
 
-const Paragraph = styled.h2`
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 20px;
-  line-height: 48px;
-  text-align: center;
-`;
+// const Paragraph = styled.h2`
+//   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+//     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+//   font-style: normal;
+//   font-weight: bold;
+//   font-size: 20px;
+//   line-height: 48px;
+//   text-align: center;
+// `;
