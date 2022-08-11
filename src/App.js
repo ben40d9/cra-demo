@@ -3,8 +3,7 @@ import React, { useEffect } from "react";
 
 const App = () => {
   useEffect(() => {
-    const url =
-      "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js";
+    const url = "https://jsonplaceholder.typicode.com/posts";
 
     const fetchData = async () => {
       try {
