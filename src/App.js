@@ -10,7 +10,10 @@ const App = () => {
       try {
         const response = await fetch(url);
         const data = await response.json();
-        console.log(data);
+        //when I do not use spread syntax the data is returned in an array of objects
+        //console.log(data)
+        //logging (...data) show objects listed individually
+        console.log(...data);
       } catch (err) {
         console.log("error", err);
       }
