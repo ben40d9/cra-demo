@@ -17,17 +17,57 @@ const App = () => {
 
         //using array manipuation, get params of each object in the array
         const dataTitle = await data.map((objs) => {
+          //console.log(objs);
           return objs.title;
         });
-        console.log(dataTitle);
+        // console.log(dataTitle);
+
+        const dataId = await data.map((objs) => {
+          return data.id;
+        });
+
+        const dataUserId = await data.map((objs) => {
+          return data.userId;
+        });
+
+        const sidebar = await (
+          <ul>
+            {data.map((objs) => (
+              <li key={objs.id}>{objs.title}</li>
+            ))}
+          </ul>
+        );
+        const content = data.map((objs) => (
+          <div key={objs.id}>
+            <h3>{objs.title}</h3>
+            <p>{objs.content}</p>
+          </div>
+        ));
       } catch (err) {
         console.log("error", err);
       }
     };
 
+    return (
+      <div>
+        {sidebar}
+        <hr />
+        {content}
+      </div>
+    );
+
     fetchData();
   }, []);
-  return <div></div>;
+  // return (
+  //   <div>
+  //     {sidebar}
+  //     <hr />
+  //     {content}
+  //   </div>
+  // );
 };
+
+// const root = ReactDOM.createRoot(document.getElementById("root"));
+// root.render(App());
 
 export default App;
