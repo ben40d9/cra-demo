@@ -12,13 +12,14 @@ const App = () => {
         const data = await response.json();
         //when I do not use spread syntax the data is returned in an array of objects
         console.log(data);
+        //logging (...data) show objects listed individually
+        // console.log(...data);
+
         //using array manipuation, get params of each object in the array
         const dataTitle = await data.map((objs) => {
           return objs.title;
         });
         console.log(dataTitle);
-        //logging (...data) show objects listed individually
-        // console.log(...data);
       } catch (err) {
         console.log("error", err);
       }
