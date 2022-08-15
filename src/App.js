@@ -37,7 +37,7 @@ const App = () => {
             ))}
           </ul>
         );
-        const content = data.map((objs) => (
+        const content = await data.map((objs) => (
           <div key={objs.id}>
             <h3>{objs.title}</h3>
             <p>{objs.content}</p>
@@ -46,15 +46,14 @@ const App = () => {
       } catch (err) {
         console.log("error", err);
       }
+      return (
+        <div>
+          {sidebar()}
+          <hr />
+          {content()}
+        </div>
+      );
     };
-
-    return (
-      <div>
-        {sidebar}
-        <hr />
-        {content}
-      </div>
-    );
 
     fetchData();
   }, []);
