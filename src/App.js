@@ -14,12 +14,9 @@ const App = () => {
         const data = await response.json();
         console.log(data);
 
-        const testy = await data.map((objs) => {
-          return objs.title;
-          // console.log(objs.title);
-        });
+        const individualObjs = data.map((obj) => obj.title).join(",");
+        console.log(individualObjs);
 
-        console.log(testy);
         // //using array manipuation, get params of each object in the array
         // const dataTitle = await data.map((objs) => {
         //   return objs.title;
@@ -32,7 +29,7 @@ const App = () => {
 
     fetchData();
   }, []);
-  return <div>{}</div>;
+  return <div></div>;
 };
 
 export default App;
