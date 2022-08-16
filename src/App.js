@@ -14,8 +14,14 @@ const App = () => {
         const data = await response.json();
         console.log(data);
 
-        const individualObjs = data.map((obj) => obj.title).join(",");
-        console.log(individualObjs);
+        // const individualObjs = data.map((obj) => obj.title).join(",");
+        // console.log(individualObjs);
+
+        const testy = await data.map((objs) => {
+          return objs.title;
+          // console.log(objs.title);
+        });
+        console.log(testy);
 
         // //using array manipuation, get params of each object in the array
         // const dataTitle = await data.map((objs) => {
