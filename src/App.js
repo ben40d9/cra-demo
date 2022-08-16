@@ -14,12 +14,19 @@ const App = () => {
         const data = await response.json();
         console.log(data);
 
-        const testy = await data.map((objs) => {
-          return objs.title;
-          // console.log(objs.title);
+        //this is the map method I would set as the state, but I want to try forEach method
+        // const testy = await data.map((objs) => {
+        //   return objs.title;
+        //   // console.log(objs.title);
+        // });
+        // console.log(testy);
+
+        //this is the forEach
+        data.forEach((obj) => {
+          console.log(obj.title);
+          // return obj.title
         });
 
-        console.log(testy);
         // //using array manipuation, get params of each object in the array
         // const dataTitle = await data.map((objs) => {
         //   return objs.title;
