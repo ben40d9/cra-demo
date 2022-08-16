@@ -12,11 +12,14 @@ const App = () => {
       try {
         const response = await fetch(url);
         const data = await response.json();
-        //when I do not use spread syntax the data is returned in an array of objects
         console.log(data);
-        //logging (...data) show objects listed individually
-        // console.log(...data);
 
+        const testy = await data.map((objs) => {
+          return objs.title;
+          // console.log(objs.title);
+        });
+
+        console.log(testy);
         // //using array manipuation, get params of each object in the array
         // const dataTitle = await data.map((objs) => {
         //   return objs.title;
@@ -29,7 +32,7 @@ const App = () => {
 
     fetchData();
   }, []);
-  return <div></div>;
+  return <div>{}</div>;
 };
 
 export default App;
