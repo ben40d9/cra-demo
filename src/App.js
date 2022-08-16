@@ -1,33 +1,49 @@
-import "./App.css";
-import React, { useEffect } from "react";
+import "./styles.css";
+import { useState, useEffect } from "react";
 
-const App = () => {
+export default function App() {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
   useEffect(() => {
-    //adding the ?_limit=X to the end of the url sets a limit on how many objects you get back
-    const url = "https://jsonplaceholder.typicode.com/posts?_limit=12";
-
-    const fetchData = async () => {
-      try {
-        const response = await fetch(url);
-        const data = await response.json();
-        //when I do not use spread syntax the data is returned in an array of objects
-        console.log(data);
-        //logging (...data) show objects listed individually
-        // console.log(...data);
-
-        //using array manipuation, get params of each object in the array
-        const dataTitle = await data.map((objs) => {
-          return objs.title;
-        });
-        console.log(dataTitle);
-      } catch (err) {
-        console.log("error", err);
-      }
-    };
-
-    fetchData();
+    fetch(`https://jsonplaceholder.typicode.com/posts?_limit=8`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(
+            `This is an HTTP error: The status is ${response.status}`
+          );
+        }
+        return response.json();
+      })
+      .then((actualData) => {
+        setData(actualData);
+        setError(null);
+      })
+      .catch((err) => {
+        setError(err.message);
+        setData(null);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   }, []);
-  return <div></div>;
-};
 
-export default App;
+  return (
+    <div className="App">
+      <h1>API Posts</h1>
+      {loading && <div>A moment please...</div>}
+      {error && (
+        <div>{`There is a problem fetching the post data - ${error}`}</div>
+      )}
+      <ul>
+        {data &&
+          data.map(({ id, title }) => (
+            <li key={id}>
+              <h3>{title}</h3>
+            </li>
+          ))}
+      </ul>
+    </div>
+  );
+}
